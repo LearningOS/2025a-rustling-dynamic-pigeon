@@ -7,10 +7,6 @@
 #[allow(unused_variables, unused_assignments)]
 fn main() {
     let my_option: Option<()> = None;
-    // 不应在知道选项为None时调用unwrap
-    // if my_option.is_none() {
-    //     my_option.unwrap();
-    // }
 
     let my_arr = &[
         -1, -2, -3,
@@ -19,7 +15,6 @@ fn main() {
     println!("My array! Here it is: {:?}", my_arr);
 
     let mut my_vec = vec![1, 2, 3, 4, 5];
-    my_vec.resize(0, 5);
     println!("This Vec is empty, see? {:?}", my_vec);
 
     let mut value_a = 45;
