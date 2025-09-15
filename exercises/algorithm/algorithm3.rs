@@ -3,10 +3,38 @@
 	This problem requires you to implement a sorting algorithm
 	you can use bubble sorting, insertion sorting, heap sorting, etc.
 */
-// I AM NOT DONE
 
-fn sort<T>(array: &mut [T]){
-	//TODO
+fn sort<T: Ord>(array: &mut [T]){
+	// 实现快速排序算法
+    if array.len() <= 1 {
+        return;
+    }
+    
+    let pivot_index = partition(array);
+    
+    // 递归排序两个子数组
+    sort(&mut array[0..pivot_index]);
+    sort(&mut array[pivot_index + 1..]);
+}
+
+// 分区函数，返回pivot最终位置
+fn partition<T: Ord>(array: &mut [T]) -> usize {
+    let len = array.len();
+    let pivot_index = len - 1; // 选择最后一个元素作为pivot
+    
+    let mut i = 0; // 小于pivot的元素的最后位置
+    
+    // 遍历数组，将小于pivot的元素移到左侧
+    for j in 0..len - 1 {
+        if array[j] <= array[pivot_index] {
+            array.swap(i, j);
+            i += 1;
+        }
+    }
+    
+    // 将pivot放到正确位置
+    array.swap(i, pivot_index);
+    i
 }
 #[cfg(test)]
 mod tests {

@@ -9,8 +9,6 @@
 
 
 fn main() {
-    //let vec0 = Vec::new();
-
     let mut vec1 = fill_vec();
 
     println!("{} has length {} content `{:?}`", "vec1", vec1.len(), vec1);
